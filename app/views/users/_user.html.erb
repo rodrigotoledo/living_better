@@ -1,0 +1,41 @@
+<div id="<%= dom_id user %>" class="rounded-md p-5 m-2 border-4 border-slate-200">
+  <div class="flex justify-center items-center">
+    <%= image_tag(user.photo.variant(:thumb)) if user.photo.attached? %>
+  </div>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Name:</strong>
+    <%= user.name %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Document:</strong>
+    <%= user.document %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Cns:</strong>
+    <%= user.cns %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Email:</strong>
+    <%= user.email %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Birthday at:</strong>
+    <%= user.birthday_at %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Phone:</strong>
+    <%= user.phone %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Status:</strong>
+    <%= user.status %>
+  </p>
+  <%= link_to t('user.edit'), edit_user_path(user), class: "rounded-lg py-3 ml-2 px-5 bg-slate-200 inline-block font-medium" %>
+</div>
