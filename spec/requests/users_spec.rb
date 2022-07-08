@@ -18,7 +18,7 @@ RSpec.describe "/users", type: :request do
   # User. As you add validations to User, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    attributes_for(:user)
+    build(:user).attributes
   }
 
   let(:invalid_attributes) {
@@ -27,7 +27,7 @@ RSpec.describe "/users", type: :request do
 
   describe "GET /index" do
     it "renders a successful response" do
-      User.create! valid_attributes
+      create(:user)
       get users_url
       expect(response).to be_successful
     end
@@ -42,22 +42,23 @@ RSpec.describe "/users", type: :request do
 
   describe "GET /edit" do
     it "renders a successful response" do
-      user = User.create! valid_attributes
+      user = create(:user)
       get edit_user_url(user)
       expect(response).to be_successful
     end
   end
 
   describe "POST /create" do
+    let(:photo){ Rack::Test::UploadedFile.new("#{Rails.root}/spec/files/photo.png") }
     context "with valid parameters" do
       it "creates a new User" do
         expect {
-          post users_url, params: { user: valid_attributes }
+          post users_url, params: { user: valid_attributes.merge(photo: photo) }
         }.to change(User, :count).by(1)
       end
 
       it "redirects to the created user" do
-        post users_url, params: { user: valid_attributes }
+        post users_url, params: { user: valid_attributes.merge(photo: photo) }
         expect(response).to redirect_to(user_url(User.last))
       end
     end
@@ -82,7 +83,7 @@ RSpec.describe "/users", type: :request do
         attributes_for(:user)
       }
       let!(:user) {
-        User.create! valid_attributes
+        create(:user)
       }
 
       it "redirects to the user" do
@@ -94,7 +95,7 @@ RSpec.describe "/users", type: :request do
 
     context "with invalid parameters" do
       it "renders a successful response (i.e. to display the 'edit' template)" do
-        user = User.create! valid_attributes
+        user = create(:user)
         patch user_url(user), params: { user: invalid_attributes }
         expect(response).to render_template(:edit)
       end

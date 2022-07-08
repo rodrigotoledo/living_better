@@ -16,14 +16,16 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  subject { described_class.new }
   describe 'validations' do
-    it "is valid with valid attributes" do
-      subject.attributes = attributes_for(:user)
-      expect(subject).to be_valid
+    context "valid" do
+      subject { build(:user) }
+      it "is valid with valid attributes" do
+        expect(subject).to be_valid
+      end
     end
 
     context "invalid" do
+      subject { described_class.new }
       it "is invalid without attributes" do
         expect(subject).not_to be_valid
       end
@@ -44,6 +46,11 @@ RSpec.describe User, type: :model do
         subject.birthday_at = '0000-00-00'
         subject.valid?
         expect(subject.errors[:birthday_at]).to have_at_least(1).items
+      end
+
+      it 'is invalid photo' do
+        subject.valid?
+        expect(subject.errors[:photo]).to have_at_least(1).items
       end
     end
 

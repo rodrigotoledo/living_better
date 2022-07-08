@@ -1,0 +1,9 @@
+pt-BR:
+  activerecord:
+    models:
+      user: Munícipe
+      users: Munícipes
+    attributes:
+      user:
+        name: Nome
+        photo: Foto
