@@ -33,13 +33,6 @@ RSpec.describe "/users", type: :request do
     end
   end
 
-  describe "GET /new" do
-    it "renders a successful response" do
-      get new_user_url
-      expect(response).to be_successful
-    end
-  end
-
   describe "GET /edit" do
     it "renders a successful response" do
       user = create(:user)
@@ -59,7 +52,7 @@ RSpec.describe "/users", type: :request do
 
       it "redirects to the created user" do
         post users_url, params: { user: valid_attributes.merge(photo: photo) }
-        expect(response).to redirect_to(user_url(User.last))
+        expect(response).to redirect_to(users_url)
       end
     end
 
@@ -72,7 +65,7 @@ RSpec.describe "/users", type: :request do
 
       it "renders a successful response (i.e. to display the 'new' template)" do
         post users_url, params: { user: invalid_attributes }
-        expect(response).to render_template(:new)
+        expect(response).to render_template(:index)
       end
     end
   end
@@ -89,7 +82,7 @@ RSpec.describe "/users", type: :request do
       it "redirects to the user" do
         patch user_url(user), params: { user: new_attributes }
         user.reload
-        expect(response).to redirect_to(user_url(user))
+        expect(response).to redirect_to(users_url)
       end
     end
 
@@ -97,7 +90,7 @@ RSpec.describe "/users", type: :request do
       it "renders a successful response (i.e. to display the 'edit' template)" do
         user = create(:user)
         patch user_url(user), params: { user: invalid_attributes }
-        expect(response).to render_template(:edit)
+        expect(response).to render_template(:index)
       end
     end
   end

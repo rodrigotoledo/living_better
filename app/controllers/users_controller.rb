@@ -1,18 +1,15 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[ edit update ]
+  before_action :set_users
 
   # GET /users or /users.json
   def index
-    @users = User.all
-  end
-
-  # GET /users/new
-  def new
     @user = User.new
   end
 
   # GET /users/1/edit
   def edit
+    render :index
   end
 
   # POST /users or /users.json
@@ -21,10 +18,10 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to user_url(@user), notice: "User was successfully created." }
+        format.html { redirect_to users_url, notice: "User was successfully created." }
         format.json { render :show, status: :created, location: @user }
       else
-        format.html { render :new, status: :unprocessable_entity }
+        format.html { render :index, status: :unprocessable_entity }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
@@ -34,10 +31,10 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to user_url(@user), notice: "User was successfully updated." }
+        format.html { redirect_to users_url, notice: "User was successfully updated." }
         format.json { render :show, status: :ok, location: @user }
       else
-        format.html { render :edit, status: :unprocessable_entity }
+        format.html { render :index, status: :unprocessable_entity }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
@@ -47,6 +44,10 @@ class UsersController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_user
       @user = User.find(params[:id])
+    end
+
+    def set_users
+      @users = User.all
     end
 
     # Only allow a list of trusted parameters through.

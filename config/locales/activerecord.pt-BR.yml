@@ -7,3 +7,9 @@ pt-BR:
       user:
         name: Nome
         photo: Foto
+        document: Documento
+        email: Email
+        birthday_at: Data de Nascimento
+        phone: Telefone
+        cns: CNS
+        status: Situação

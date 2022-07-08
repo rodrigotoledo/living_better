@@ -9,7 +9,7 @@
 #  email       :string           not null
 #  name        :string           not null
 #  phone       :string           not null
-#  status      :string           default(NULL), not null
+#  status      :integer          default("inactive"), not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #
