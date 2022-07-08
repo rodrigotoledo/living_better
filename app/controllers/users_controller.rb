@@ -8,6 +8,7 @@ class UsersController < ApplicationController
   def index
     @user = User.new
     @user.build_address
+    @users = @users.search(params[:term]) if params[:term].present?
   end
 
   # GET /users/1/edit
