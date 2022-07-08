@@ -6,6 +6,7 @@ class User < ApplicationRecord
   validate :photo_presence, on: :create
 
   has_one_attached :photo do |attachable|
+    attachable.variant :medium, resize_to_limit: [200, 200]
     attachable.variant :thumb, resize_to_limit: [100, 100]
   end
 
