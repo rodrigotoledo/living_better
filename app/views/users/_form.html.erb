@@ -53,33 +53,42 @@
           </div>
 
           <div class="mb-6">
-            <%= form.select :status, User.statuses.map { |key, value| [key.humanize, key] }, {include_blank: t('user.select_status')}, class: "form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" %>
+            <%= form.select :status, User.statuses.map { |key, value| [User.human_attribute_name("status.#{key}"), key] }, {include_blank: t('user.select_status')}, class: "form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" %>
           </div>
-
 
           <div class="flex items-center my-4 before:flex-1 before:border-t before:border-gray-300 before:mt-0.5 after:flex-1 after:border-t after:border-gray-300 after:mt-0.5">
             <p class="text-center font-semibold mx-4 mb-0"><%=t('user.address')%></p>
           </div>
 
-          <!-- Email input -->
-          <div class="mb-6">
-            <input
-              type="text"
-              class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-              id="exampleFormControlInput2"
-              placeholder="Email address"
-            />
-          </div>
+          <%= form.fields_for :address do |address_subform| %>
+            <div class="mb-6">
+              <%= address_subform.text_field :zipcode, placeholder: Address.human_attribute_name(:zipcode), class: "form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" %>
+            </div>
 
-          <!-- Password input -->
-          <div class="mb-6">
-            <input
-              type="password"
-              class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-              id="exampleFormControlInput2"
-              placeholder="Password"
-            />
-          </div>
+            <div class="mb-6">
+              <%= address_subform.text_field :street, placeholder: Address.human_attribute_name(:street), class: "form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" %>
+            </div>
+
+            <div class="mb-6">
+              <%= address_subform.text_field :street_complement, placeholder: Address.human_attribute_name(:street_complement), class: "form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" %>
+            </div>
+
+            <div class="mb-6">
+              <%= address_subform.text_field :neighborhood, placeholder: Address.human_attribute_name(:neighborhood), class: "form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" %>
+            </div>
+
+            <div class="mb-6">
+              <%= address_subform.text_field :city, placeholder: Address.human_attribute_name(:city), class: "form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" %>
+            </div>
+
+            <div class="mb-6">
+              <%= address_subform.text_field :state, placeholder: Address.human_attribute_name(:state), class: "form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" %>
+            </div>
+
+            <div class="mb-6">
+              <%= address_subform.text_field :ibge, placeholder: Address.human_attribute_name(:ibge), class: "form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" %>
+            </div>
+          <% end %>
 
 
           <div class="text-center lg:text-left">

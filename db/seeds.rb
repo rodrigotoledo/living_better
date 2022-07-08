@@ -9,6 +9,13 @@
     status: 1
   )
   user.photo.attach(io: File.open("#{Rails.root}/spec/files/photo.png"), filename: "photo.png", content_type: "image/png")
+  user.build_address(
+    street: Faker::Address.street_address,
+    zipcode: '35300-100',
+    neighborhood: Faker::Address.community,
+    city: Faker::Address.city,
+    state: 'MG'
+  )
   user.save!
 
 end

@@ -38,7 +38,5 @@ RSpec.describe User, type: :model do
         expect(subject.errors[:photo]).to have_at_least(1).items
       end
     end
-
-
   end
 end
