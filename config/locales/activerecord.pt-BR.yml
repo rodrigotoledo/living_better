@@ -3,8 +3,14 @@ pt-BR:
     models:
       user: Munícipe
       users: Munícipes
+      address: Endereço
+      addresses: Endereços
     attributes:
+      user/status:
+        inactive: Inativo
+        active: Ativo
       user:
+        address: Endereço
         name: Nome
         photo: Foto
         document: Documento
@@ -13,3 +19,12 @@ pt-BR:
         phone: Telefone
         cns: CNS
         status: Situação
+      address:
+        user: Munícipe
+        zipcode: CEP
+        street: Endereço
+        street_complement: Complemento
+        neighborhood: Bairro
+        city: Cidade
+        state: Estado
+        ibge: IBGE

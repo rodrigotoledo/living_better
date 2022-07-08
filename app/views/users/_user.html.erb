@@ -4,38 +4,56 @@
   </div>
 
   <p class="my-5">
-    <strong class="block font-medium mb-1">Name:</strong>
-    <%= user.name %>
+    <%= user.name %> - <%= user.email %>
   </p>
 
   <p class="my-5">
-    <strong class="block font-medium mb-1">Document:</strong>
+    <strong class="block font-medium mb-1"><%=User.human_attribute_name(:document)%>:</strong>
     <%= user.document %>
   </p>
 
   <p class="my-5">
-    <strong class="block font-medium mb-1">Cns:</strong>
+    <strong class="block font-medium mb-1"><%=User.human_attribute_name(:cns)%>:</strong>
     <%= user.cns %>
   </p>
 
   <p class="my-5">
-    <strong class="block font-medium mb-1">Email:</strong>
-    <%= user.email %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Birthday at:</strong>
+    <strong class="block font-medium mb-1"><%=User.human_attribute_name(:birthday_at)%>:</strong>
     <%= user.birthday_at %>
   </p>
 
   <p class="my-5">
-    <strong class="block font-medium mb-1">Phone:</strong>
+    <strong class="block font-medium mb-1"><%=User.human_attribute_name(:phone)%>:</strong>
     <%= user.phone %>
   </p>
 
   <p class="my-5">
-    <strong class="block font-medium mb-1">Status:</strong>
-    <%= user.status %>
+    <strong class="block font-medium mb-1"><%=User.human_attribute_name(:status)%>:</strong>
+    <%= User.human_attribute_name("status.#{user.status}") %>
+  </p>
+
+  <div class="flex items-center my-4 before:flex-1 before:border-t before:border-gray-300 before:mt-0.5 after:flex-1 after:border-t after:border-gray-300 after:mt-0.5">
+    <p class="text-center font-semibold mx-4 mb-0"><%=t('user.address')%></p>
+  </div>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1"><%=Address.human_attribute_name(:zipcode)%>:</strong>
+    <%= user.address.zipcode %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1"><%=Address.human_attribute_name(:street)%>:</strong>
+    <%= user.address.street %>, <%= user.address.neighborhood %>. <%= user.address.city %> - <%= user.address.state %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1"><%=Address.human_attribute_name(:street_complement)%>:</strong>
+    <%= user.address.street_complement %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1"><%=Address.human_attribute_name(:ibge)%>:</strong>
+    <%= user.address.ibge %>
   </p>
   <%= link_to t('user.edit'), edit_user_path(user), class: "rounded-lg py-3 ml-2 px-5 bg-slate-200 inline-block font-medium" %>
 </div>

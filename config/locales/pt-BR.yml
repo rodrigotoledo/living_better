@@ -148,9 +148,9 @@ pt-BR:
     select:
       prompt: Por favor selecione
     submit:
-      create: Criar %{model}
-      submit: Salvar %{model}
-      update: Atualizar %{model}
+      create: Salvar dados
+      submit: Salvar dados
+      update: Salvar dados
   number:
     currency:
       format:
@@ -221,3 +221,12 @@ pt-BR:
       long: "%d de %B de %Y, %H:%M"
       short: "%d de %B, %H:%M"
     pm: ''
+  user:
+    data: Informações
+    new_user: Novo Munícipe
+    edit: Editar Munícipe
+    address: Endereço
+    select_status: Selecione a Situação
+  flash:
+    success: Sucesso ao salvar informações
+    alert: Erro ao salvar informações
