@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
+  include SearchCop
   has_one :address
   validates :name, :email, :document, :phone, :cns, :birthday_at, presence: true
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
@@ -18,12 +19,18 @@ class User < ApplicationRecord
 
   enum :status, %i[inactive active]
 
+  search_scope :search do
+    attributes :name, :document, :cns, :email, :birthday_at, :phone, :status
+    attributes address: ['address.zipcode', 'address.street', 'address.street_complement',
+                         'address.neighborhood', 'address.city', 'address.state', 'address.ibge']
+  end
+
   protected
 
   def photo_presence
     pattern = %r{^(image)/(.)+$}
-    unless photo.attached? && pattern.match?(photo.attachment.blob.content_type)
-      errors.add(:photo, I18n.t('errors.messages.blank'))
-    end
+    return if photo.attached? && pattern.match?(photo.attachment.blob.content_type)
+
+    errors.add(:photo, I18n.t('errors.messages.blank'))
   end
 end

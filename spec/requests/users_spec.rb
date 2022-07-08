@@ -27,10 +27,28 @@ RSpec.describe '/users', type: :request do
   end
 
   describe 'GET /index' do
+    before do
+      create(:user, email: 'abc@abc.com')
+      create(:user, email: 'aaa@aaa.com')
+    end
+
     it 'renders a successful response' do
-      create(:user)
       get users_url
       expect(response).to be_successful
+    end
+
+    context 'searching' do
+      it 'renders without search' do
+        get users_url
+        expect(response).to be_successful
+        expect(assigns(:users)).to have(2).items
+      end
+
+      it 'renders with search' do
+        get users_url, params: { term: 'abc' }
+        expect(response).to be_successful
+        expect(assigns(:users)).to have(1).items
+      end
     end
   end
 

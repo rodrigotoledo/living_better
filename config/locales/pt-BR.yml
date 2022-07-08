@@ -230,3 +230,7 @@ pt-BR:
   flash:
     success: Sucesso ao salvar informações
     alert: Erro ao salvar informações
+  filter:
+    input: Digite algo a procurar
+    button: Filtrar
+
