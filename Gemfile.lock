@@ -66,9 +66,6 @@ GEM
       i18n (>= 1.6, < 2)
       minitest (>= 5.1)
       tzinfo (~> 2.0)
-    annotate (3.2.0)
-      activerecord (>= 3.2, < 8.0)
-      rake (>= 10.4, < 14.0)
     ast (2.4.2)
     bindex (0.8.1)
     bootsnap (1.12.0)
@@ -102,6 +99,8 @@ GEM
     faker (2.21.0)
       i18n (>= 1.8.11, < 2)
     ffi (1.15.5)
+    font-awesome-rails (4.7.0.8)
+      railties (>= 3.2, < 8.0)
     formatador (1.1.0)
     globalid (1.0.0)
       activesupport (>= 5.0)
@@ -291,8 +290,6 @@ GEM
     stimulus-rails (1.0.4)
       railties (>= 6.0.0)
     strscan (3.0.3)
-    tailwindcss-rails (2.0.10-x86_64-linux)
-      railties (>= 6.0.0)
     thor (1.2.1)
     timeout (0.3.0)
     to_factory (2.1.0)
@@ -321,7 +318,6 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
-  annotate
   bootsnap
   cpf_cnpj
   cpf_faker
@@ -329,6 +325,7 @@ DEPENDENCIES
   date_validator
   factory_bot_rails
   faker
+  font-awesome-rails
   guard
   guard-rspec
   image_processing (>= 1.2)
@@ -351,7 +348,6 @@ DEPENDENCIES
   simplecov
   sprockets-rails
   stimulus-rails
-  tailwindcss-rails
   to_factory
   turbo-rails
   tzinfo-data

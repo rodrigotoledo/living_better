@@ -47,7 +47,7 @@ class UsersController < ApplicationController
     end
 
     def set_users
-      @users = User.all
+      @users = User.order(created_at: :desc)
     end
 
     # Only allow a list of trusted parameters through.

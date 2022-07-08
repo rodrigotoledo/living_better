@@ -49,7 +49,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_08_023055) do
     t.string "email", null: false
     t.date "birthday_at", null: false
     t.string "phone", null: false
-    t.integer "status", default: 1, null: false
+    t.integer "status", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

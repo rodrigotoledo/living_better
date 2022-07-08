@@ -1,18 +1,3 @@
-# == Schema Information
-#
-# Table name: users
-#
-#  id          :bigint           not null, primary key
-#  birthday_at :date             not null
-#  cns         :string           not null
-#  document    :string           not null
-#  email       :string           not null
-#  name        :string           not null
-#  phone       :string           not null
-#  status      :integer          default("inactive"), not null
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
-#
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
