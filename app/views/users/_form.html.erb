@@ -49,7 +49,7 @@
           </div>
 
           <div class="mb-6">
-            <%= form.text_field :phone, placeholder: User.human_attribute_name(:phone), data: { mask: '+00 00 0000-0000' }, class: "form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" %>
+            <%= form.text_field :phone, placeholder: User.human_attribute_name(:phone), data: { mask: '+0000000000' }, maxlength: 14, class: "form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" %>
           </div>
 
           <div class="mb-6">

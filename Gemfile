@@ -97,3 +97,4 @@ gem "image_processing", ">= 1.2"
 gem 'date_validator'
 gem 'cpf_cnpj'
 gem 'search_cop'
+gem 'twilio-ruby', '~> 5.68.0'

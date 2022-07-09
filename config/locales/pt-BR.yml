@@ -234,3 +234,6 @@ pt-BR:
     input: Digite algo a procurar
     button: Filtrar
 
+  user_mailer:
+    information_updated:
+      subject: Informções atualizadas

@@ -3,6 +3,7 @@
 class User < ApplicationRecord
   include SearchCop
   has_one :address
+  after_save :delivery_messages
   validates :name, :email, :document, :phone, :cns, :birthday_at, presence: true
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
   validates_cpf_format_of :document
@@ -26,6 +27,23 @@ class User < ApplicationRecord
   end
 
   protected
+
+  def delivery_messages
+    UserMailer.information_updated(self.id).deliver_later
+    # :nocov:
+    return true if Rails.env.test?
+
+    require 'twilio-ruby'
+    account_sid = Rails.application.credentials.config[:twilio_account_sid]
+    auth_token = Rails.application.credentials.config[:twilio_auth_token]
+
+    @client = Twilio::REST::Client.new account_sid, auth_token
+    @client.messages.create(
+      to: (Rails.env.development? ? Rails.application.credentials.config[:sms_phone_number] : phone),
+      messaging_service_sid: Rails.application.credentials.config[:twilio_messaging_service_sid],
+      body: I18n.t('user_mailer.information_updated.subject')
+    )
+  end
 
   def photo_presence
     pattern = %r{^(image)/(.)+$}
