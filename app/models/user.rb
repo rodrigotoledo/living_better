@@ -37,7 +37,7 @@ class User < ApplicationRecord
   protected
 
   def delivery_messages
-    UserMailer.information_updated(self.id).deliver_later
+    UserMailer.information_updated(self).deliver_later
     # :nocov:
     return true if Rails.env.test? || self.avoid_sms
 
