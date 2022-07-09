@@ -4,6 +4,13 @@ class User < ApplicationRecord
   include SearchCop
   has_one :address
   after_save :delivery_messages
+  after_create do
+    broadcast_prepend_to 'users'
+  end
+
+  after_update do
+    broadcast_update_to 'users'
+  end
   validates :name, :email, :document, :phone, :cns, :birthday_at, presence: true
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
   validates_cpf_format_of :document

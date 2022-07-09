@@ -20,7 +20,8 @@
     <% end %>
   </div>
 
-  <div id="users" class="grid grid-cols-2 gap-2">
+  <%= turbo_stream_from "users" %>
+  <%= turbo_frame_tag "users", class: 'grid grid-cols-2 gap-2' do %>
     <%= render @users %>
-  </div>
+  <% end %>
 </div>
