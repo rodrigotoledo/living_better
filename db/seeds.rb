@@ -5,7 +5,7 @@
     document: Faker::CPF.pretty,
     cns: Faker::Code.isbn,
     birthday_at: "1990-01-01".to_date,
-    phone: '+55 33 91111-1111',
+    phone: Rails.application.credentials.config[:sms_phone_number],
     status: 1
   )
   user.photo.attach(io: File.open("#{Rails.root}/spec/files/photo.png"), filename: "photo.png", content_type: "image/png")

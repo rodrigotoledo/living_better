@@ -5,6 +5,27 @@
 - RSpec knowledge
 
 # Coding and of course, testing...
+## Setup environment vars
+
+To send sms messages, this application use the Twilio service, so you need edit your credentials with your account.
+
+- `EDITOR=vim rails credentials:edit`
+
+After that add the follow information:
+
+```
+twilio_account_sid: ---
+twilio_auth_token: ---
+twilio_from_number: "---"
+twilio_messaging_service_sid: "---"
+sms_phone_number: "---"
+sms_phone_number_development: "+15005550006"
+sms_phone_number_production: "+15005550006"
+```
+
+Maybe in Linux systems you will need install dependencies like
+
+- `sudo apt-get install libvips libvips-dev libvips-tools`
 
 This project use `guard` and `rspec` as monitor and test engine of application, so everytime that you will be code something the application should have coverage of tests.
 

@@ -93,7 +93,7 @@ group :development do
 end
 
 gem "validators"
-gem "image_processing", ">= 1.2"
+gem "image_processing"
 gem 'date_validator'
 gem 'cpf_cnpj'
 gem 'search_cop'
