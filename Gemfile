@@ -69,9 +69,6 @@ group :development, :test do
   gem 'simplecov'
   gem 'database_cleaner-active_record'
 
-  gem 'faker'
-  gem 'cpf_faker'
-
   gem 'guard'
   gem 'guard-rspec', require: false
 end
@@ -98,4 +95,5 @@ gem 'date_validator'
 gem 'cpf_cnpj'
 gem 'search_cop'
 gem 'twilio-ruby', '~> 5.68.0'
-gem 'activestorage-dropbox'
+gem 'faker'
+gem 'cpf_faker'

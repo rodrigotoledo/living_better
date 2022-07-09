@@ -2,10 +2,6 @@ test:
   service: Disk
   root: <%= Rails.root.join("tmp/storage") %>
 
-dropbox:
-  service: Dropbox
-  access_token: <%=Rails.application.credentials.config[:dropbox_key]%>
-
 local:
   service: Disk
   root: <%= Rails.root.join("storage") %>
