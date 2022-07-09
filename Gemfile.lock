@@ -361,6 +361,7 @@ DEPENDENCIES
   rubocop-performance
   rubocop-rails
   rubocop-rspec
+  ruby-vips
   rufo
   search_cop
   shoulda-matchers
