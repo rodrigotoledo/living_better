@@ -12,9 +12,9 @@
   <div class="flex justify-between items-center mt-6 mb-6">
     <div class="flex">
       <h1 class="font-bold text-4xl"><%=User.model_name.human%></h1>
-      <%= link_to t('user.new_user'), users_path, class: "rounded-lg py-3 px-5 ml-5 bg-blue-600 text-white block font-medium" %>
+      <%= link_to t('user.new_user'), users_url, class: "rounded-lg py-3 px-5 ml-5 bg-blue-600 text-white block font-medium" %>
     </div>
-    <%= form_tag root_path, method: :get, class: 'flex justify-end' do %>
+    <%= form_tag root_url, method: :get, class: 'flex justify-end' do %>
       <%= text_field_tag :term, params[:term], placeholder: t('filter.input'), class: "block w-2/3 px-4 py-2 mr-5 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" %>
       <%= submit_tag t('filter.button'), name: nil, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
     <% end %>

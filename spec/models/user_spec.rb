@@ -39,4 +39,13 @@ RSpec.describe User, type: :model do
       end
     end
   end
+
+  describe 'send messages' do
+    let!(:user) { create(:user) }
+
+    it 'sends an email' do
+      ActiveJob::Base.queue_adapter = :test
+      expect { user.update(name: Faker::Name.name_with_middle) }.to have_enqueued_job(ActionMailer::MailDeliveryJob)
+    end
+  end
 end

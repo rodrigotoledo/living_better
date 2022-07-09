@@ -21,7 +21,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      redirect_to users_url, notice: I18n.t('flash.success')
+      redirect_to users_path, notice: I18n.t('flash.success')
     else
       flash.now[:alert] = I18n.t('flash.alert')
       render :index, status: :unprocessable_entity
@@ -31,7 +31,7 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1 or /users/1.json
   def update
     if @user.update(user_params)
-      redirect_to users_url, notice: I18n.t('flash.success')
+      redirect_to users_path, notice: I18n.t('flash.success')
     else
       flash.now[:alert] = I18n.t('flash.alert')
       render :index, status: :unprocessable_entity

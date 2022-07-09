@@ -1,59 +1,54 @@
-<div id="<%= dom_id user %>" class="rounded-md p-5 m-2 border-4 border-slate-200">
-  <div class="flex justify-center items-center">
-    <%= image_tag(user.photo.variant(:thumb)) if user.photo.attached? %>
-  </div>
-
+<div class="rounded-md p-5 m-2 border-4 border-slate-200">
   <p class="my-5">
-    <%= user.name %> - <%= user.email %>
+    <%= @user.name %> - <%= @user.email %>
   </p>
 
   <p class="my-5">
     <strong class="block font-medium mb-1"><%=User.human_attribute_name(:document)%>:</strong>
-    <%= user.document %>
+    <%= @user.document %>
   </p>
 
   <p class="my-5">
     <strong class="block font-medium mb-1"><%=User.human_attribute_name(:cns)%>:</strong>
-    <%= user.cns %>
+    <%= @user.cns %>
   </p>
 
   <p class="my-5">
     <strong class="block font-medium mb-1"><%=User.human_attribute_name(:birthday_at)%>:</strong>
-    <%= user.birthday_at %>
+    <%= @user.birthday_at %>
   </p>
 
   <p class="my-5">
     <strong class="block font-medium mb-1"><%=User.human_attribute_name(:phone)%>:</strong>
-    <%= user.phone %>
+    <%= @user.phone %>
   </p>
 
   <p class="my-5">
     <strong class="block font-medium mb-1"><%=User.human_attribute_name(:status)%>:</strong>
-    <%= User.human_attribute_name("status.#{user.status}") %>
+    <%= User.human_attribute_name("status.#{@user.status}") %>
   </p>
 
   <div class="flex items-center my-4 before:flex-1 before:border-t before:border-gray-300 before:mt-0.5 after:flex-1 after:border-t after:border-gray-300 after:mt-0.5">
-    <p class="text-center font-semibold mx-4 mb-0"><%=t('user.address')%></p>
+    <p class="text-center font-semibold mx-4 mb-0"><%=t('@user.address')%></p>
   </div>
 
   <p class="my-5">
     <strong class="block font-medium mb-1"><%=Address.human_attribute_name(:zipcode)%>:</strong>
-    <%= user.address.zipcode %>
+    <%= @user.address.zipcode %>
   </p>
 
   <p class="my-5">
     <strong class="block font-medium mb-1"><%=Address.human_attribute_name(:street)%>:</strong>
-    <%= user.address.street %>, <%= user.address.neighborhood %>. <%= user.address.city %> - <%= user.address.state %>
+    <%= @user.address.street %>, <%= @user.address.neighborhood %>. <%= @user.address.city %> - <%= @user.address.state %>
   </p>
 
   <p class="my-5">
     <strong class="block font-medium mb-1"><%=Address.human_attribute_name(:street_complement)%>:</strong>
-    <%= user.address.street_complement %>
+    <%= @user.address.street_complement %>
   </p>
 
   <p class="my-5">
     <strong class="block font-medium mb-1"><%=Address.human_attribute_name(:ibge)%>:</strong>
-    <%= user.address.ibge %>
+    <%= @user.address.ibge %>
   </p>
-  <%= link_to t('user.edit'), edit_user_url(user), class: "rounded-lg py-3 ml-2 px-5 bg-slate-200 inline-block font-medium" %>
 </div>
