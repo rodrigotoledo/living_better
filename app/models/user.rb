@@ -26,6 +26,7 @@ class User < ApplicationRecord
   end
 
   enum :status, %i[inactive active]
+  attr_accessor :avoid_sms
 
   search_scope :search do
     attributes :name, :document, :cns, :email, :birthday_at, :phone, :status
@@ -38,7 +39,7 @@ class User < ApplicationRecord
   def delivery_messages
     UserMailer.information_updated(self.id).deliver_later
     # :nocov:
-    return true if Rails.env.test?
+    return true if Rails.env.test? || self.avoid_sms
 
     require 'twilio-ruby'
     account_sid = Rails.application.credentials.config[:twilio_account_sid]
