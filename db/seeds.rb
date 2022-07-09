@@ -1,4 +1,4 @@
-20.times.each do
+5.times.each do
   user = User.new(
     name: Faker::Name.name_with_middle,
     email: Faker::Internet.email,
