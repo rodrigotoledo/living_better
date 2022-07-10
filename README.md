@@ -14,6 +14,8 @@ To send sms messages, this application use the Twilio service, so you need edit 
 After that add the follow information:
 
 ```
+mailer_username: ---
+mailer_password: ---
 twilio_account_sid: ---
 twilio_auth_token: ---
 twilio_from_number: "---"
